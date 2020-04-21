@@ -11,9 +11,20 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success(res) {
-        const latitude = res.latitude
         const longitude = res.longitude
-        console.log(latitude,longitude)
+        const latitude = res.latitude
+        console.log(longitude,latitude)
+
+
+        wx.request({
+          url: 'https://api.gugudata.com/location/geodecode?appkey=K4QAH3UY2NRR&longitude='+longitude+'&latitude='+latitude,
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          success(res) {
+            console.log(res.data.Data[0].Province)
+          }
+        })
       }
     })
   },
