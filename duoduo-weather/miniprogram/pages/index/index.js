@@ -15,13 +15,13 @@ Page({
         const latitude = res.latitude
         console.log(longitude,latitude)
 
-
+        // 调用地理坐标逆转码接口，将经纬度转换成文字信息显示
         wx.request({
           url: 'https://api.gugudata.com/location/geodecode?appkey=K4QAH3UY2NRR&longitude='+longitude+'&latitude='+latitude,
           header: {
             'content-type': 'application/json' // 默认值
           },
-          success(res) {
+          success(res) { // 请求成功后的回调
             console.log(res.data.Data[0].Province)
           }
         })
