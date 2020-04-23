@@ -10,9 +10,9 @@
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "duoduo-weather",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#4584d1",
+    "navigationBarTitleText": "DD-weather",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

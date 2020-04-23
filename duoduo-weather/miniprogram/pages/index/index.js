@@ -13,7 +13,6 @@ Page({
       success(res) {
         const longitude = res.longitude
         const latitude = res.latitude
-        console.log(longitude,latitude)
 
         // 调用地理坐标逆转码接口，将经纬度转换成文字信息显示
         wx.request({
@@ -22,7 +21,31 @@ Page({
             'content-type': 'application/json' // 默认值
           },
           success(res) { // 请求成功后的回调
-            console.log(res.data.Data[0].Province)
+            const province = res.data.Data[0].Province
+            console.log(province)
+
+            // 获取当前位置的Code
+            wx.request({
+              url: 'https://api.gugudata.com/weather/weatherinfo/region?appkey=ECY2VNVKKV72&keyword=' + province,
+              header: {
+                'content-type':'application/json'
+              },
+              success(res) {
+                console.log(res.data)
+                const code = res.data.Data[0].Code
+
+                // 根据Code查询天气详情
+                wx.request({
+                  url: 'https://api.gugudata.com/weather/weatherinfo?appkey=ECY2VNVKKV72&code=' + code + '&days=1',
+                  header: {
+                    'content-type':'application/json'
+                  },
+                  success(res) {
+                    console.log(res.data)
+                  }
+                })
+              }
+            })
           }
         })
       }
