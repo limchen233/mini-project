@@ -17,13 +17,11 @@ page {
   flex: 0 0 40%;
   width: 100%;
   background:linear-gradient(#4990e2,#87c1f1);
-  overflow: hidden;
 }
 
 .list{
   width: 100%;
   flex: 0 0 60%;
-  overflow: auto;
 }
 .list_item{
   background-color: #fff;

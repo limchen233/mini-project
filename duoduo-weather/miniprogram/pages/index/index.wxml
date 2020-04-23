@@ -1,12 +1,15 @@
 <!--index.wxml-->
 <view class="container">
   <view class="top"></view>
-  <view class="list">
-    <view class="list_item list_item_alter" ></view>
-    <view class="list_item"></view>
-    <view class="list_item list_item_alter"></view>
-    <view class="list_item"></view>
-    <view class="list_item list_item_alter"></view>
-    <view class="list_item"></view>
-  </view>
+  <scroll-view scroll-y style="height:300px;">
+    <view class="list">
+      <view class="list_item list_item_alter" ></view>
+      <view class="list_item"></view>
+      <view class="list_item list_item_alter"></view>
+      <view class="list_item"></view>
+      <view class="list_item list_item_alter"></view>
+      <view class="list_item"></view>
+    </view>
+  </scroll-view>
+  
 </view>
