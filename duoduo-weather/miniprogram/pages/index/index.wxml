@@ -1,15 +1,13 @@
 <!--index.wxml-->
 <view class="container">
   <view class="top"></view>
-  <scroll-view scroll-y style="height:300px;">
-    <view class="list">
+  <scroll-view class="list" scroll-y style="height:{{scrollHeight}}rpx;">
       <view class="list_item list_item_alter" ></view>
       <view class="list_item"></view>
       <view class="list_item list_item_alter"></view>
       <view class="list_item"></view>
       <view class="list_item list_item_alter"></view>
       <view class="list_item"></view>
-    </view>
   </scroll-view>
   
 </view>
