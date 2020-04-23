@@ -1,7 +1,12 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="top">
-  
+  <view class="top"></view>
+  <view class="list">
+    <view class="list_item list_item_alter" ></view>
+    <view class="list_item"></view>
+    <view class="list_item list_item_alter"></view>
+    <view class="list_item"></view>
+    <view class="list_item list_item_alter"></view>
+    <view class="list_item"></view>
   </view>
-  <view class="list"></view>
 </view>

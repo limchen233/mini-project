@@ -1,11 +1,40 @@
 /**index.wxss**/
 
 page {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: linear-gradient(#4990e2,#87c1f1)
-}
-.container{
+  width: 100%;
+  height: 100%;
   background: #f6f6f6;
+}
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: top;
+  align-items: top;
+  width: 100%;
+  height: 100%;
+}
+.top {
+  flex: 0 0 40%;
+  width: 100%;
+  background:linear-gradient(#4990e2,#87c1f1);
+  overflow: hidden;
+}
+
+.list{
+  width: 100%;
+  flex: 0 0 60%;
+  overflow: auto;
+}
+.list_item{
+  background-color: #fff;
+  height: 150rpx;
+}
+.list_item_alter{
+  background-color: #f6f9fe;
+}
+
+/* 去除滚动条的样式 */
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
 }
