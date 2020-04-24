@@ -16,20 +16,16 @@
     <view class="tips">{{tips}}</view>
   </view>
   <scroll-view class="list" scroll-y style="height:{{scrollHeight}}rpx;">
-      <!-- <view class="list_item list_item_alter"></view>
-      <view class="list_item"></view>
-      <view class="list_item list_item_alter"></view>
-      <view class="list_item"></view>
-      <view class="list_item list_item_alter"></view>
-      <view class="list_item"></view> -->
-      <view wx:for="{{weatherArray}}" wx:for-index="index" wx:for-item="item" wx:key="item">
-        <view class="list_item {{index % 2 === 0 ? 'list_item_alter' : ''}}">
-          <text>星期四</text>
-          <image src="{{weatherIcon}}" style="width:60rpx;height:60rpx;"></image>
-          <text>{{item.TemperatureHigh}}℃/{{item.TemperatureLow}}℃</text>
+    <view wx:for="{{weatherArray}}" wx:for-index="index" wx:for-item="item" wx:key="item">
+      <view class="list_item {{index % 2 === 0 ? 'list_item_alter' : ''}}">
+        <view>
+          <text>{{item.WeatherDate}}</text>
+          <text>{{item.weekDay}}</text>
         </view>
-
+        <image src="{{item.icon}}" style="width:60rpx;height:60rpx;"></image>
+        <text>{{item.TemperatureHigh}}℃/{{item.TemperatureLow}}℃</text>
       </view>
+    </view>
   </scroll-view>
   
 </view>
