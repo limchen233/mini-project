@@ -7,7 +7,6 @@ Page({
     location: 'loading...',
     weatherDataGenerateDataTime: 'loading...',
     weatherArray: [],
-    listArray: [],
     tips: 'loading',
     weatherIcon: '',
     currentTemperature: '',
@@ -64,11 +63,13 @@ Page({
                     'content-type': 'application/json'
                   },
                   success(res) {
-                    console.log(res.data)
                     let weatherArray = res.data.Data
+                    console.log(weatherArray)
                     weatherArray.map(item => {
-                      // 截取日期并替换符号
-                      item.WeatherDate = item.WeatherDate.slice(5).replace('-','/')
+                      // 处理数据
+                      item.WeatherDate = item.WeatherDate.slice(5).replace('-','/') // 截取日期并替换符号
+                      item.weekDay = that.getWeekDay(item.WeatherDataGenerateDateTime) // 添加weekDay
+                      item.icon = that.getWeatherIcon(item.WeatherInfo) // 添加图标
                     })
 
                     let weatherDataGenerateDataTime = ''
@@ -77,7 +78,7 @@ Page({
                       let reg = /(\d{2}:\d{2}):\d{2}/g.exec(res.data.Data[0].WeatherDataGenerateDateTime)
                       weatherDataGenerateDataTime = reg[1]
                       that.setData({
-                        weatherArray: that.handleData(weatherArray.splice(1)),
+                        weatherArray: weatherArray.splice(1),
                         weatherDataGenerateDataTime: weatherDataGenerateDataTime,
                         currentTemperature: res.data.Data[0].TemperatureHigh + '/' + res.data.Data[0].TemperatureLow,
                         tips: res.data.Data[0].LifeHelperWear.HelperContent.replace('。', ''),
@@ -126,9 +127,9 @@ Page({
       case '小雨':
         return '/images/icons/weather_icon_13.svg'
       case '中雨':
-        return '/images/icons/weather_icon_16.svg'
-      case '大雨':
         return '/images/icons/weather_icon_7.svg'
+      case '大雨':
+        return '/images/icons/weather_icon_16.svg'
       case '多云转小雨':
         return '/images/icons/weather_icon_14.svg'
       case '多云转晴':
@@ -145,6 +146,8 @@ Page({
         return '/images/icons/weather_icon_3.svg'
       case '晴转阴':
         return '/images/icons/weather_icon_3.svg'
+      case '雷阵雨':
+        return '/images/icons/weather_icon_24.svg'
     }
   },
 
@@ -154,21 +157,5 @@ Page({
     let day = myDate.getDay()
     let weekDay = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
     return weekDay[day]
-  },
-
-  // 处理得到的数据
-  handleData(data) {
-    let listData = []
-    data.map((item,index) => {
-      item.weekDay = this.getWeekDay(item.WeatherDataGenerateDateTime)
-      item.icon = this.getWeatherIcon(item.WeatherInfo)
-      if(index !== 0) {
-        listData.push(item)
-      }
-    })
-    this.setData({
-      weatherArray:listData
-    })
-    return data
   }
 })

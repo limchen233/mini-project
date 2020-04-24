@@ -23,7 +23,7 @@
           <text>{{item.weekDay}}</text>
         </view>
         <image src="{{item.icon}}" style="width:60rpx;height:60rpx;"></image>
-        <text>{{item.TemperatureHigh}}℃/{{item.TemperatureLow}}℃</text>
+        <text>{{item.TemperatureHigh}}℃ / {{item.TemperatureLow}}℃</text>
       </view>
     </view>
   </scroll-view>

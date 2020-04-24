@@ -18,6 +18,7 @@ page {
   flex: 0 0 40%;
   width: 100%;
   background:linear-gradient(#4990e2,#87c1f1);
+  position: relative;
 }
 
 .list{
@@ -69,7 +70,9 @@ page {
 .tips{
   font-size: 24rpx;
   text-align: center;
-  position: relative;
-  top: 50rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
   color: #fff;
 }
