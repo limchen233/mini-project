@@ -4,6 +4,7 @@ page {
   width: 100%;
   height: 100%;
   background: #f6f6f6;
+  overflow-y: hidden; 
 }
 .container {
   display: flex;
@@ -26,6 +27,10 @@ page {
 .list_item{
   background-color: #fff;
   height: 150rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
 }
 .list_item_alter{
   background-color: #f6f9fe;
@@ -35,4 +40,36 @@ page {
 ::-webkit-scrollbar{
   width: 0;
   height: 0;
+}
+
+.topTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding-top:60rpx;
+}
+
+.title{
+  padding-right: 40rpx;
+}
+.subtitle{
+  text-align: center;
+  color: #f3f3f3;
+  font-size: 24rpx;
+}
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.temperature{
+  font-size: 56rpx;
+}
+.tips{
+  font-size: 24rpx;
+  text-align: center;
+  position: relative;
+  top: 50rpx;
+  color: #fff;
 }

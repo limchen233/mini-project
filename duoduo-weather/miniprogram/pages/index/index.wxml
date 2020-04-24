@@ -1,13 +1,35 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="top"></view>
+  <view class="top">
+    <view class="topTitle">
+      <view class="title">{{location}}</view>
+      <view class="weatherInfo">{{weatherInfo}}</view>
+    </view>
+    
+    <view class="subtitle">上次更新时间：{{weatherDataGenerateDataTime}}</view>
+    <view class="content">
+      <view class="temperature">{{currentTemperature}} ℃</view>
+      <view class="weathericon">
+        <image src="{{weatherIcon}}" style="height:200rpx;width:200rpx;"></image>
+      </view>
+    </view>
+    <view class="tips">{{tips}}</view>
+  </view>
   <scroll-view class="list" scroll-y style="height:{{scrollHeight}}rpx;">
-      <view class="list_item list_item_alter" ></view>
+      <!-- <view class="list_item list_item_alter"></view>
       <view class="list_item"></view>
       <view class="list_item list_item_alter"></view>
       <view class="list_item"></view>
       <view class="list_item list_item_alter"></view>
-      <view class="list_item"></view>
+      <view class="list_item"></view> -->
+      <view wx:for="{{weatherArray}}" wx:for-index="index" wx:for-item="item" wx:key="item">
+        <view class="list_item {{index % 2 === 0 ? 'list_item_alter' : ''}}">
+          <text>星期四</text>
+          <image src="{{weatherIcon}}" style="width:60rpx;height:60rpx;"></image>
+          <text>{{item.TemperatureHigh}}℃/{{item.TemperatureLow}}℃</text>
+        </view>
+
+      </view>
   </scroll-view>
   
 </view>
