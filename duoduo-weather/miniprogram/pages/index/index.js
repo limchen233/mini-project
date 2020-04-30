@@ -1,6 +1,6 @@
 //index.js
 const app = getApp()
-import {appkey,appkey2} from '../utils/util.js'
+import {appkey,appkey2,baseUrl} from '../utils/util.js'
 Page({
   data: {
     scrollHeight: 0,
@@ -29,7 +29,7 @@ Page({
 
         // 调用地理坐标逆转码接口，将经纬度转换成文字信息显示
         wx.request({
-          url: 'https://api.gugudata.com/location/geodecode?appkey='+ appkey2 +'&longitude=' + longitude + '&latitude=' + latitude,
+          url: baseUrl + '/location/geodecode?appkey='+ appkey2 +'&longitude=' + longitude + '&latitude=' + latitude,
           header: {
             'content-type': 'application/json' // 默认值
           },
@@ -40,7 +40,7 @@ Page({
 
             // 获取当前位置的Code
             wx.request({
-              url: 'https://api.gugudata.com/weather/weatherinfo/region?appkey=' + appkey+'&keyword=' + res.data.Data[0].Province,
+              url: baseUrl + '/weather/weatherinfo/region?appkey=' + appkey+'&keyword=' + res.data.Data[0].Province,
               header: {
                 'content-type': 'application/json'
               },
@@ -58,7 +58,7 @@ Page({
 
                 // 根据Code查询天气详情
                 wx.request({
-                  url: 'https://api.gugudata.com/weather/weatherinfo?appkey='+appkey+'&code=' + code + '&days=7',
+                  url: baseUrl + '/weather/weatherinfo?appkey='+appkey+'&code=' + code + '&days=7',
                   header: {
                     'content-type': 'application/json'
                   },
