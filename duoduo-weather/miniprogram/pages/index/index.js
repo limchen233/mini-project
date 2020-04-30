@@ -59,7 +59,7 @@ Page({
                   url:'/weather/weatherinfo?appkey='+appkey+'&code=' + code + '&days=7',
                   success:res => {
                     let weatherArray = res.Data
-                    console.log(weatherArray[1], weatherArray[2])
+                    // console.log(weatherArray[1], weatherArray[2])
                     weatherArray.map(item => {
                       // 处理数据
                       item.WeatherDate = item.WeatherDate.slice(5).replace('-','/') // 截取日期并替换符号
