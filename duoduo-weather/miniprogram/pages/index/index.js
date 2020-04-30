@@ -1,6 +1,6 @@
 //index.js
 const app = getApp()
-
+import {appkey,appkey2} from '../utils/util.js'
 Page({
   data: {
     scrollHeight: 0,
@@ -29,7 +29,7 @@ Page({
 
         // 调用地理坐标逆转码接口，将经纬度转换成文字信息显示
         wx.request({
-          url: 'https://api.gugudata.com/location/geodecode?appkey=K4QAH3UY2NRR&longitude=' + longitude + '&latitude=' + latitude,
+          url: 'https://api.gugudata.com/location/geodecode?appkey='+ appkey2 +'&longitude=' + longitude + '&latitude=' + latitude,
           header: {
             'content-type': 'application/json' // 默认值
           },
@@ -40,7 +40,7 @@ Page({
 
             // 获取当前位置的Code
             wx.request({
-              url: 'https://api.gugudata.com/weather/weatherinfo/region?appkey=ECY2VNVKKV72&keyword=' + res.data.Data[0].Province,
+              url: 'https://api.gugudata.com/weather/weatherinfo/region?appkey=' + appkey+'&keyword=' + res.data.Data[0].Province,
               header: {
                 'content-type': 'application/json'
               },
@@ -58,13 +58,13 @@ Page({
 
                 // 根据Code查询天气详情
                 wx.request({
-                  url: 'https://api.gugudata.com/weather/weatherinfo?appkey=ECY2VNVKKV72&code=' + code + '&days=7',
+                  url: 'https://api.gugudata.com/weather/weatherinfo?appkey='+appkey+'&code=' + code + '&days=7',
                   header: {
                     'content-type': 'application/json'
                   },
                   success(res) {
                     let weatherArray = res.data.Data
-                    console.log(weatherArray)
+                    console.log(weatherArray[5], weatherArray[6])
                     weatherArray.map(item => {
                       // 处理数据
                       item.WeatherDate = item.WeatherDate.slice(5).replace('-','/') // 截取日期并替换符号
@@ -134,18 +134,24 @@ Page({
         return '/images/icons/weather_icon_14.svg'
       case '多云转晴':
         return '/images/icons/weather_icon_3.svg'
+      case '多云转阴':
+        return '/images/icons/weather_icon_2.svg'
+      case '阴转多云':
+        return '/images/icons/weather_icon_3.svg'
       case '小雨转多云':
         return '/images/icons/weather_icon_14.svg'
       case '中雨转多云':
         return '/images/icons/weather_icon_8.svg'
       case '多云转中雨':
         return '/images/icons/weather_icon_17.svg'
+      case '阴转中雨':
+        return '/images/icons/weather_icon_32.svg'
       case '晴转多云':
         return '/images/icons/weather_icon_3.svg'
       case '阴转晴':
         return '/images/icons/weather_icon_3.svg'
       case '晴转阴':
-        return '/images/icons/weather_icon_3.svg'
+        return '/images/icons/weather_icon_2.svg'
       case '雷阵雨':
         return '/images/icons/weather_icon_24.svg'
     }
