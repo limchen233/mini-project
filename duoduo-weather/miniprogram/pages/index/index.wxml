@@ -13,7 +13,13 @@
         <image src="{{weatherIcon}}" style="height:200rpx;width:200rpx;"></image>
       </view>
     </view>
-    <view class="tips">{{tips}}</view>
+    <view class="tips">
+      <view style="display:flex;justify-content:space-around;">
+        <view>空气：{{air}} </view>
+        <view>紫外线：{{ultraviolet}}</view>
+      </view>
+      <view>{{tips}}</view>
+    </view>
   </view>
   <scroll-view class="list" scroll-y style="height:{{scrollHeight}}rpx;">
     <view wx:for="{{weatherArray}}" wx:for-index="index" wx:for-item="item" wx:key="item">

@@ -15,7 +15,9 @@ Page({
     weatherIcon: '',
     currentTemperature: '',
     weatherInfo: '',
-    date: ''
+    date: '',
+    air:'',
+    ultraviolet:''
   },
 
   onLoad: function () {
@@ -58,6 +60,7 @@ Page({
                 http.request({
                   url:'/weather/weatherinfo?appkey='+appkey+'&code=' + code + '&days=7',
                   success:res => {
+                    console.log(res.Data)
                     let weatherArray = res.Data
                     // console.log(weatherArray[1], weatherArray[2])
                     weatherArray.map(item => {
@@ -77,6 +80,8 @@ Page({
                         weatherDataGenerateDataTime: weatherDataGenerateDataTime,
                         currentTemperature: res.Data[0].TemperatureHigh + '/' + res.Data[0].TemperatureLow,
                         tips: res.Data[0].LifeHelperWear.HelperContent.replace('。', ''),
+                        air: res.Data[0].LifeHelperAir.HelperStatus,
+                        ultraviolet: res.Data[0].LifeHelperUV.HelperStatus,
                         weatherIcon: that.getWeatherIcon(res.Data[0].WeatherInfo),
                         weatherInfo: res.Data[0].WeatherInfo
                       })
