@@ -151,6 +151,8 @@ Page({
         return '/images/icons/weather_icon_3.svg'
       case '晴转阴':
         return '/images/icons/weather_icon_2.svg'
+      case '晴转小雨':
+        return '/images/icons/weather_icon_14.svg'
       case '雷阵雨':
         return '/images/icons/weather_icon_24.svg'
     }
